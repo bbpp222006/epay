@@ -15,12 +15,12 @@ if ($typename == 'wxpay') {
 }
 
 $data = array(
+	"notifyUrl" => $siteurl.'pay/vpay/notify/'.TRADE_NO.'/',//异步通知地址
+	"returnUrl" => $siteurl.'pay/vpay/return/'.TRADE_NO.'/'//同步跳转地址
 	'payId'=>TRADE_NO,
 	'type'=>$type,
 	'price'=>$order['money'],
-	'isHtml'=>'2',
-	"notifyUrl" => $siteurl.'pay/vpay/notify/'.TRADE_NO.'/',//异步通知地址
-	"returnUrl" => $siteurl.'pay/vpay/return/'.TRADE_NO.'/'//同步跳转地址
+	'isHtml'=>0,
 );
 
 $data['sign']=md5($data['payId'].$data['type'].$data['price'].$channel['appkey']);
